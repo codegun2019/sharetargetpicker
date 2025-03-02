@@ -1,0 +1,53 @@
+{
+  "advertisers": {
+    "hero": {
+      "title": "Quảng cáo với AdsOK",
+      "subtitle": "Tiếp cận đối tượng mục tiêu của bạn và phát triển doanh nghiệp với các giải pháp quảng cáo sáng tạo của chúng tôi.",
+      "cta": "Bắt đầu ngay"
+    },
+    "features": {
+      "title": "Tại sao nên quảng cáo với chúng tôi",
+      "targeting": {
+        "title": "Nhắm mục tiêu chính xác",
+        "description": "Tiếp cận đối tượng lý tưởng của bạn với các tùy chọn nhắm mục tiêu nâng cao của chúng tôi."
+      },
+      "analytics": {
+        "title": "Phân tích thời gian thực",
+        "description": "Nhận thông tin chi tiết ngay lập tức với phân tích thời gian thực toàn diện của chúng tôi."
+      },
+      "performance": {
+        "title": "Hiệu suất cao",
+        "description": "Đạt được ROI tốt hơn với mạng quảng cáo hiệu suất cao của chúng tôi."
+      },
+      "costEffective": {
+        "title": "Tiết kiệm chi phí",
+        "description": "Tối đa hóa ngân sách quảng cáo của bạn với mức giá cạnh tranh của chúng tôi."
+      }
+    },
+    "adFormats": {
+      "title": "Định dạng quảng cáo của chúng tôi",
+      "display": {
+        "title": "Quảng cáo hiển thị",
+        "description": "Quảng cáo banner bắt mắt với nhiều kích thước khác nhau phù hợp với mọi trang web."
+      },
+      "native": {
+        "title": "Quảng cáo bản địa",
+        "description": "Quảng cáo tích hợp liền mạch phù hợp với giao diện và cảm nhận của trang web."
+      },
+      "video": {
+        "title": "Quảng cáo video",
+        "description": "Quảng cáo video hấp dẫn để thu hút sự chú ý của khán giả của bạn."
+      }
+    },
+    "packages": {
+      "title": "Gói dịch vụ của chúng tôi",
+      "description": "Chọn gói hoàn hảo cho nhu cầu quảng cáo của bạn"
+    },
+    "cta": {
+      "title": "Sẵn sàng tăng cường quảng cáo của bạn?",
+      "subtitle": "Tham gia cùng hàng nghìn nhà quảng cáo thành công trên nền tảng của chúng tôi.",
+      "button": "Bắt đầu quảng cáo ngay"
+    }
+  }
+}
+

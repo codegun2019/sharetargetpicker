@@ -1,0 +1,489 @@
+{
+  "nav": {
+    "about": "About Us",
+    "advertisers": "Advertisers",
+    "publishers": "Publishers",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign Up",
+    "services": "Services",
+    "products": "Products",
+    "blog": "Blog",
+    "articles": "Articles",
+    "faq": "FAQ"
+  },
+  "languages": {
+    "th": "Thai",
+    "en": "English",
+    "lo": "Lao",
+    "zh": "Chinese",
+    "km": "Khmer",
+    "vi": "Vietnamese",
+    "ko": "Korean",
+    "ja": "Japanese"
+  },
+  "home": {
+    "hero": {
+      "title": "Advertise Smart, Earn More!",
+      "subtitle": "Maximize your advertising revenue with our innovative platform. Join thousands of publishers who trust AdsOK.",
+      "cta1": "Get Started Now",
+      "cta2": "Learn More"
+    },
+    "whyChoose": {
+      "title": "Why Choose AdsOK",
+      "description": "Our platform offers the best advertising solutions with high CPM rates, timely payments, and excellent support.",
+      "items": {
+        "certified": "Certified",
+        "quickStart": "Quick Start",
+        "reliable": "Reliable",
+        "support": "Support",
+        "payments": "Payments",
+        "reporting": "Reporting"
+      },
+      "cta1": "Register Now",
+      "cta2": "Contact Support"
+    },
+    "advertiseWithUs": {
+      "title": "Advertise with Us Because",
+      "items": {
+        "platform": {
+          "title": "Easy-to-Use Platform",
+          "description": "Our intuitive dashboard makes campaign management simple and efficient."
+        },
+        "posting": {
+          "title": "Simple Ad Posting",
+          "description": "Create and launch your ads in minutes with our streamlined process."
+        },
+        "tracking": {
+          "title": "User Results Tracking",
+          "description": "Monitor performance in real-time with comprehensive analytics."
+        },
+        "payments": {
+          "title": "Crypto-Only Payments",
+          "description": "Secure, fast, and global payment options using cryptocurrency."
+        }
+      }
+    },
+    "whatIsAdsOK": {
+      "title": "What is AdsOK?",
+      "description": "AdsOK is a comprehensive advertising platform connecting advertisers with publishers to maximize revenue and reach.",
+      "advertisers": {
+        "title": "Advertisers Get Exposure",
+        "description": "Reach your target audience effectively with our smart targeting options and competitive rates."
+      },
+      "publishers": {
+        "title": "Publishers Earn More",
+        "description": "Maximize your website revenue with our high-performing ad formats and competitive CPM rates."
+      },
+      "cta": "Get Started"
+    },
+    "adTypes": {
+      "title": "Types of Ads We Offer",
+      "description": "Choose from our variety of ad formats to suit your marketing needs and maximize engagement.",
+      "static": {
+        "title": "Static Images",
+        "description": "Traditional banner ads in various sizes to fit any website layout and design."
+      },
+      "animated": {
+        "title": "Animated Banners",
+        "description": "Eye-catching animated ads that drive higher engagement and click-through rates."
+      }
+    },
+    "partners": {
+      "title": "Our platform is trusted by leading brands worldwide"
+    },
+    "cta": {
+      "title": "Ready to join the Largest Ad Network?",
+      "description": "Join thousands of publishers and advertisers who are already benefiting from our platform.",
+      "cta1": "Sign Up Now",
+      "cta2": "Contact Sales"
+    },
+    "services": {
+      "title": "Our Services",
+      "adNetwork": {
+        "title": "Ad Network",
+        "description": "Connect advertisers with publishers through our robust ad network platform."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Gain insights into your ad performance with our advanced analytics tools."
+      },
+      "management": {
+        "title": "Ad Management",
+        "description": "Easily manage and optimize your ad campaigns with our user-friendly interface."
+      }
+    },
+    "cryptoPayments": {
+      "title": "Enjoy seamless advertising and publishing with the ease of crypto payments - fast, secure, and globally accessible!"
+    },
+    "packages": {
+      "title": "Our Packages",
+      "description": "Choose the perfect package for your advertising needs"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us"
+    },
+    "getToKnow": {
+      "title": "Get to Know AdsOK?",
+      "description": "AdsOK is an advertising platform that helps you reach your target audience effectively. We have a variety of solutions to meet all needs, both for advertisers and website owners.",
+      "targetedAds": {
+        "title": "Targeted Advertising",
+        "description": "AdsOK has a system that helps you reach your target audience accurately, making your advertising investment worthwhile and highly effective.",
+        "cta": "Read More"
+      },
+      "websiteValue": {
+        "title": "Increase Your Website's Value",
+        "description": "AdsOK helps website owners generate revenue from ad space cost-effectively, with an efficient system and fast payments.",
+        "cta": "Read More"
+      }
+    },
+    "whyAdvertise": {
+      "title": "Why Advertise With Us",
+      "easyPlatform": {
+        "title": "Easy-to-Use Platform",
+        "description": "AdsOK has a simple, uncomplicated management system that allows you to manage your ad campaigns efficiently."
+      },
+      "simplePayment": {
+        "title": "Simple Ad Payment",
+        "description": "AdsOK's payment system is highly secure. In just a few steps, you can start your advertising campaign immediately."
+      },
+      "instantTracking": {
+        "title": "Instant Result Tracking",
+        "description": "AdsOK has a reporting system that shows real-time results, allowing you to track and optimize your campaigns efficiently."
+      }
+    },
+    "adTypes": {
+      "title": "Types of Ads We Currently Offer",
+      "description": "Choose the ad format that suits your business. We have a variety of solutions to meet all needs.",
+      "standardBanner": {
+        "title": "Standard Banners",
+        "description": "Traditional, effective ad format that can be resized as needed, suitable for all websites."
+      },
+      "animatedBanner": {
+        "title": "Animated Banners",
+        "description": "Animated ads that attract more attention, increasing engagement opportunities."
+      }
+    },
+    "cta": {
+      "title": "Ready to Join the Ad Network?",
+      "description": "Join us, both advertisers and website owners, to create endless business opportunities.",
+      "cta1": "Sign Up for Advertising",
+      "cta2": "Sign Up as a Partner"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us"
+    },
+    "customerService": {
+      "title": "Customer Service",
+      "description": "Our customer service team is ready to assist you or answer any questions 24 hours a day, every day, with no holidays. We're available via Telegram or other channels as per customer convenience.",
+      "telegram": {
+        "button": "Telegram: @CS_Adsok",
+        "description": "Scan the QR Code to contact our team"
+      },
+      "line": {
+        "button": "Line: @adsok",
+        "description": "Scan the QR Code to add us as a friend"
+      }
+    },
+    "joinNetwork": {
+      "title": "Ready to Join the Ad Network?",
+      "description": "Join us, both advertisers and website owners, to create endless business opportunities.",
+      "cta1": "Sign Up for Advertising",
+      "cta2": "Sign Up as a Partner"
+    },
+    "contactInfo": {
+      "services": {
+        "title": "AdsOK Services",
+        "items": ["Telegram: adsok.support", "Email: adsok.cs@gmail.com", "24/7 Service"]
+      },
+      "links": {
+        "title": "Contact Us",
+        "items": ["Sign Up for Advertising", "Sign Up as a Partner", "About AdsOK", "Contact AdsOK"]
+      },
+      "social": {
+        "title": "Follow Us"
+      }
+    }
+  },
+  "login": {
+    "title": "Welcome to \"AdsOK Advertiser\" 🚀",
+    "subtitle": "Please log in and start your journey",
+    "email": "Email",
+    "emailPlaceholder": "Please enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Please enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create account",
+    "copyright": "© 2025 \"AdsOK Advertiser\""
+  },
+  "register": {
+    "title": "Sign Up",
+    "subtitle": "Create your account and start your journey with us",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "userType": "User Type",
+    "userTypePlaceholder": "Select user type",
+    "advertiser": "Advertiser",
+    "publisher": "Website Owner",
+    "registerButton": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "login": "Log In",
+    "copyright": "© 2025 AdsOK. All rights reserved."
+  },
+  "advertisers": {
+    "hero": {
+      "title": "Advertise with AdsOK",
+      "subtitle": "Reach your target audience and grow your business with our innovative advertising solutions.",
+      "cta": "Get Started"
+    },
+    "features": {
+      "title": "Why Advertise with Us",
+      "targeting": {
+        "title": "Precise Targeting",
+        "description": "Reach your ideal audience with our advanced targeting options."
+      },
+      "analytics": {
+        "title": "Real-time Analytics",
+        "description": "Get instant insights with our comprehensive real-time analytics."
+      },
+      "performance": {
+        "title": "High Performance",
+        "description": "Achieve better ROI with our high-performing ad network."
+      },
+      "costEffective": {
+        "title": "Cost-Effective",
+        "description": "Maximize your advertising budget with our competitive rates."
+      }
+    },
+    "adFormats": {
+      "title": "Our Ad Formats",
+      "display": {
+        "title": "Display Ads",
+        "description": "Eye-catching banner ads in various sizes to fit any website."
+      },
+      "native": {
+        "title": "Native Ads",
+        "description": "Seamlessly integrated ads that match the look and feel of the website."
+      },
+      "video": {
+        "title": "Video Ads",
+        "description": "Engaging video ads to capture your audience's attention."
+      }
+    },
+    "cta": {
+      "title": "Ready to Boost Your Advertising?",
+      "subtitle": "Join thousands of successful advertisers on our platform.",
+      "button": "Start Advertising Now"
+    }
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Select the perfect package for your advertising needs",
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "perMonth": "per month",
+    "perYear": "per year",
+    "choosePlan": "Choose Plan",
+    "contactUs": "Contact Us",
+    "basic": {
+      "name": "Basic",
+      "price": {
+        "monthly": "$99",
+        "annually": "$990"
+      },
+      "description": "Perfect for small businesses and startups",
+      "features": ["Up to 10,000 ad impressions", "Basic targeting options", "Standard analytics", "Email support"]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": {
+        "monthly": "$299",
+        "annually": "$2,990"
+      },
+      "description": "Ideal for growing businesses",
+      "features": [
+        "Up to 100,000 ad impressions",
+        "Advanced targeting options",
+        "Real-time analytics",
+        "Priority email and chat support",
+        "A/B testing"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": {
+        "monthly": "Custom",
+        "annually": "Custom"
+      },
+      "description": "For large-scale advertising campaigns",
+      "features": [
+        "Unlimited ad impressions",
+        "Custom targeting solutions",
+        "Advanced analytics and reporting",
+        "24/7 dedicated support",
+        "API access",
+        "Custom integrations"
+      ]
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Find answers to common questions about our packages",
+    "viewFaq": "View FAQ"
+  },
+  "help": {
+    "hero": {
+      "title": "Help Center",
+      "searchPlaceholder": "Search for questions or topics you need help with"
+    },
+    "quickLinks": {
+      "guide": "User Guide",
+      "guideDesc": "Learn how to use all features",
+      "payment": "Payments",
+      "paymentDesc": "How to pay and withdraw",
+      "analytics": "Analytics",
+      "analyticsDesc": "Understand reports and analytics",
+      "security": "Security",
+      "securityDesc": "Account security"
+    },
+    "tabs": {
+      "all": "All",
+      "general": "General",
+      "advertisers": "Advertisers",
+      "publishers": "Publishers"
+    },
+    "categories": {
+      "general": {
+        "title": "General",
+        "whatIsAdsok": {
+          "title": "What is AdsOK?",
+          "content": "AdsOK is an online advertising platform connecting advertisers with website owners"
+        },
+        "howToStart": {
+          "title": "How to get started?",
+          "content": "Sign up and choose your account type (advertiser or website owner)"
+        }
+      },
+      "advertisers": {
+        "title": "For Advertisers",
+        "createAd": {
+          "title": "How to create an ad",
+          "content": "Log in, choose ad format, set budget and target audience"
+        },
+        "payment": {
+          "title": "How to pay",
+          "content": "We only accept cryptocurrency payments for security and speed"
+        }
+      },
+      "publishers": {
+        "title": "For Publishers",
+        "addWebsite": {
+          "title": "How to add a website",
+          "content": "Register your website and wait for our team's verification"
+        },
+        "earnings": {
+          "title": "Receiving earnings",
+          "content": "Earnings are transferred to your crypto wallet on the 1st and 15th of each month"
+        }
+      }
+    },
+    "contact": {
+      "title": "Couldn't find what you're looking for?",
+      "description": "Contact our support team 24/7",
+      "telegram": "Telegram",
+      "email": "Email"
+    }
+  },
+  "faq": {
+    "breadcrumb": {
+      "help": "Help Center",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "title": "Frequently Asked Questions",
+      "searchPlaceholder": "Search for your questions"
+    },
+    "categories": {
+      "general": {
+        "title": "General Questions",
+        "whatIsAdsok": {
+          "question": "What is AdsOK?",
+          "answer": "AdsOK is an online advertising platform that connects advertisers with website owners to create the best business opportunities for both parties."
+        },
+        "howToRegister": {
+          "question": "How do I register?",
+          "answer": "Click the 'Sign Up' button in the top right corner of the website, fill in your information, and choose your account type (advertiser or website owner)."
+        }
+      },
+      "advertisers": {
+        "title": "For Advertisers",
+        "payment": {
+          "question": "How do I pay for advertising?",
+          "answer": "We only accept cryptocurrency payments for security and speed. You can pay using USDT or TRON."
+        },
+        "approval": {
+          "question": "Do ads need approval?",
+          "answer": "Yes, all ads must be reviewed by our team before they start showing to ensure they comply with our policies."
+        }
+      },
+      "publishers": {
+        "title": "For Publishers",
+        "earnings": {
+          "question": "When do I receive earnings?",
+          "answer": "We pay earnings on the 1st and 15th of each month, automatically transferred to your specified crypto wallet."
+        },
+        "traffic": {
+          "question": "What's the minimum traffic requirement?",
+          "answer": "Your website should have at least 1,000 daily visitors and quality content that meets our policies."
+        }
+      },
+      "technical": {
+        "title": "Technical",
+        "adCode": {
+          "question": "How do I install the ad code?",
+          "answer": "After your website is approved, you'll receive an installation code. Place it in the <head> section of your website or install it through your tag manager."
+        },
+        "reporting": {
+          "question": "How can I view reports?",
+          "answer": "Log in to your dashboard to see real-time reports, historical statistics, and download reports in various formats."
+        }
+      }
+    },
+    "needHelp": {
+      "title": "Couldn't find what you're looking for?",
+      "description": "Contact our support team 24/7",
+      "contact": "Contact Us",
+      "helpCenter": "Help Center"
+    },
+    "contentPage": {
+      "title": "FAQ Details",
+      "body": "Detailed content will be added later. We apologize for the inconvenience."
+    },
+    "readMore": "Read More",
+    "backToFaq": "Back to FAQ"
+  },
+  "cookieConsent": {
+    "message": "This website uses cookies to improve your experience.",
+    "learnMore": "Learn More",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "privacyPolicy": {
+    "openButton": "Privacy Policy",
+    "title": "Privacy Policy",
+    "description": "Our privacy policy is as follows",
+    "content": "Privacy policy content will be added later"
+  }
+}
+

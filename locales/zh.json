@@ -1,0 +1,53 @@
+{
+  "advertisers": {
+    "hero": {
+      "title": "在AdsOK投放广告",
+      "subtitle": "通过我们创新的广告解决方案，触及您的目标受众并发展您的业务。",
+      "cta": "立即开始"
+    },
+    "features": {
+      "title": "为什么选择我们投放广告",
+      "targeting": {
+        "title": "精准定位",
+        "description": "通过我们先进的定位选项触及您的理想受众。"
+      },
+      "analytics": {
+        "title": "实时分析",
+        "description": "通过我们全面的实时分析获得即时洞察。"
+      },
+      "performance": {
+        "title": "高性能",
+        "description": "通过我们高性能的广告网络实现更好的投资回报率。"
+      },
+      "costEffective": {
+        "title": "成本效益",
+        "description": "通过我们具有竞争力的价格最大化您的广告预算。"
+      }
+    },
+    "adFormats": {
+      "title": "我们的广告格式",
+      "display": {
+        "title": "展示广告",
+        "description": "各种尺寸的吸引眼球的横幅广告，适合任何网站。"
+      },
+      "native": {
+        "title": "原生广告",
+        "description": "无缝集成的广告，与网站的外观和感觉相匹配。"
+      },
+      "video": {
+        "title": "视频广告",
+        "description": "引人入胜的视频广告，吸引您受众的注意力。"
+      }
+    },
+    "packages": {
+      "title": "我们的套餐",
+      "description": "选择最适合您广告需求的完美套餐"
+    },
+    "cta": {
+      "title": "准备好提升您的广告效果了吗？",
+      "subtitle": "加入我们平台上成千上万成功的广告主。",
+      "button": "立即开始投放广告"
+    }
+  }
+}
+
