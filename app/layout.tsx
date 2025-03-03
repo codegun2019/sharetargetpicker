@@ -1,21 +1,22 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Anuphan } from "next/font/google"
+import { Prompt } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { CookieConsent } from "@/components/cookie-consent"
+import { PrivacyPolicyPopup } from "@/components/privacy-policy-popup"
 import { GoToTopButton } from "@/components/go-to-top-button"
-import { FloatingContactButtons } from "@/components/floating-contact-buttons"
 
-const anuphan = Anuphan({
+const prompt = Prompt({
   subsets: ["latin", "thai"],
-  display: "swap",
-  variable: "--font-anuphan",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-prompt",
 })
 
 export const metadata: Metadata = {
-  title: "AdsOK",
-  description: "AdsOK - Your Advertising Solution",
+  title: "เกี่ยวกับเรา | AdsOK - แพลตฟอร์มโฆษณาออนไลน์",
+  description: "เรียนรู้เพิ่มเติมเกี่ยวกับ AdsOK แพลตฟอร์มโฆษณาออนไลน์ที่จะช่วยให้ธุรกิจของคุณเติบโต",
     generator: 'v0.dev'
 }
 
@@ -25,13 +26,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="th" className={anuphan.variable}>
-      <body className="font-sans">
+    <html lang="th">
+      <body className={`${prompt.variable} font-sans`}>
         <Header />
-        {children}
+        <main className="pt-16">
+          {" "}
+          {/* Add padding-top here */}
+          {children}
+        </main>
         <Footer />
+        <CookieConsent />
+        <PrivacyPolicyPopup />
         <GoToTopButton />
-        <FloatingContactButtons />
       </body>
     </html>
   )

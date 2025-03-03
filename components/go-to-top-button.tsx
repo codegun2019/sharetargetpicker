@@ -9,11 +9,7 @@ export function GoToTopButton() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+      setIsVisible(window.pageYOffset > 300)
     }
 
     window.addEventListener("scroll", toggleVisibility)
@@ -29,17 +25,17 @@ export function GoToTopButton() {
     })
   }
 
-  if (!isVisible) {
-    return null
-  }
-
   return (
-    <Button
-      className="fixed bottom-6 right-6 z-50 bg-[#20b526] hover:bg-[#00b207] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
-      onClick={scrollToTop}
-    >
-      <ArrowUp size={24} className="animate-bounce" />
-    </Button>
+    <>
+      {isVisible && (
+        <Button
+          className="fixed bottom-6 right-6 z-50 bg-[#20b526] hover:bg-[#00b207] text-white rounded-full p-3 shadow-lg transition-all duration-300 animate-bounce"
+          onClick={scrollToTop}
+        >
+          <ArrowUp size={24} />
+        </Button>
+      )}
+    </>
   )
 }
 
