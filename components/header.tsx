@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Globe, LogIn, UserPlus } from "lucide-react"
+import { Globe, LogIn, UserPlus, Menu, X } from "lucide-react"
 
 // Import translations
 import th from "../locales/th.json"
@@ -40,6 +40,7 @@ export function Header() {
   const router = useRouter()
   const [lang, setLang] = useState("th")
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const savedLang = localStorage.getItem("language") || "th"
@@ -132,11 +133,11 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className={
+                className={`gap-2 ${
                   isScrolled
                     ? "text-black hover:text-primary hover:bg-gray-100"
                     : "text-white hover:text-primary hover:bg-white"
-                }
+                }`}
               >
                 <Globe className="h-5 w-5" />
               </Button>
@@ -154,31 +155,78 @@ export function Header() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link href="/login">
-            <Button
-              variant="secondary"
-              className={`${
-                isScrolled
-                  ? "bg-transparent border-primary text-primary hover:bg-primary hover:text-white"
-                  : "bg-transparent border-white text-white hover:bg-white hover:text-primary"
-              } ${pathname === "/login" ? "bg-white text-primary" : ""}`}
-              icon={<LogIn className="w-4 h-4" />}
-            >
-              {t?.login || "Login"}
-            </Button>
-          </Link>
-          <Link href="/register">
-            <Button
-              className={
-                isScrolled ? "bg-primary text-white hover:bg-primary/90" : "bg-white text-primary hover:bg-gray-100"
-              }
-              icon={<UserPlus className="w-4 h-4" />}
-            >
-              {t?.signup || "Sign Up"}
-            </Button>
-          </Link>
+          <div className="hidden md:flex space-x-2">
+            <Link href="/login">
+              <Button
+                variant="secondary"
+                className={`gap-2 ${
+                  isScrolled
+                    ? "bg-transparent border-primary text-primary hover:bg-primary hover:text-white"
+                    : "bg-transparent border-white text-white hover:bg-white hover:text-primary"
+                } ${pathname === "/login" ? "bg-white text-primary" : ""}`}
+                icon={<LogIn className="w-4 h-4" />}
+              >
+                {t?.login || "Login"}
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button
+                className={`gap-2 ${
+                  isScrolled ? "bg-primary text-white hover:bg-primary/90" : "bg-white text-primary hover:bg-gray-100"
+                }`}
+                icon={<UserPlus className="w-4 h-4" />}
+              >
+                {t?.signup || "Sign Up"}
+              </Button>
+            </Link>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden gap-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
       </div>
+      {isMobileMenuOpen && (
+        <div className="md:hidden">
+          <nav className="flex flex-col space-y-4 p-4">
+            <Link href="/about" className="font-medium">
+              {t?.about || "About Us"}
+            </Link>
+            <Link href="/advertisers" className="font-medium">
+              {t?.advertisers || "Advertisers"}
+            </Link>
+            <Link href="/services" className="font-medium">
+              {t?.services || "Services"}
+            </Link>
+            <Link href="/products" className="font-medium">
+              {t?.products || "Products"}
+            </Link>
+            <Link href="/articles" className="font-medium">
+              {t?.articles || "Articles"}
+            </Link>
+            <Link href="/faq" className="font-medium">
+              {t?.faq || "FAQ"}
+            </Link>
+            <Link href="/contact" className="font-medium">
+              {t?.contact || "Contact"}
+            </Link>
+            <Link href="/login">
+              <Button variant="secondary" className="w-full gap-2" icon={<LogIn className="w-4 h-4" />}>
+                {t?.login || "Login"}
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button className="w-full gap-2" icon={<UserPlus className="w-4 h-4" />}>
+                {t?.signup || "Sign Up"}
+              </Button>
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

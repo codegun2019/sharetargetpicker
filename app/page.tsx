@@ -5,15 +5,17 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Autoplay } from "swiper/modules"
+import { Navigation, Pagination } from "swiper/modules"
 import { CheckCircle, Zap, Shield, Headphones, CreditCard, BarChart, Check, ArrowRight, Phone } from "lucide-react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Users, DollarSign, QrCode } from "lucide-react"
 
 // Import Swiper styles
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/autoplay"
+import "swiper/css"
+import "swiper/css/navigation"
 
 // Import translations
 import th from "../locales/th.json"
@@ -29,6 +31,7 @@ const translations: { [key: string]: any } = { th, en, lo, zh, km, vi, ko, ja }
 
 export default function Home() {
   const [lang, setLang] = useState("th")
+  const [currency, setCurrency] = useState("THB")
 
   useEffect(() => {
     const savedLang = localStorage.getItem("language") || "th"
@@ -57,6 +60,24 @@ export default function Home() {
     { icon: BarChart, title: t.whyChoose?.items?.reporting || "Reporting" },
   ]
 
+  const [swiper, setSwiper] = useState(null)
+
+  const slideNext = () => {
+    if (swiper) {
+      swiper.slideNext()
+    }
+  }
+
+  const slidePrev = () => {
+    if (swiper) {
+      swiper.slidePrev()
+    }
+  }
+
+  const handleCurrencyChange = (newCurrency: string) => {
+    setCurrency(newCurrency)
+  }
+
   return (
     <main>
       {/* Hero Section */}
@@ -75,7 +96,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-gray-100 font-semibold px-8"
+                  className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 gap-2"
                   icon={<Zap className="w-5 h-5" />}
                 >
                   เริ่มต้นเลย
@@ -83,7 +104,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-white text-white hover:bg-white hover:text-primary font-semibold px-8"
+                  className="bg-transparent border-white text-white hover:bg-white hover:text-primary font-semibold px-8 gap-2"
                   icon={<ArrowRight className="w-5 h-5" />}
                 >
                   เรียนรู้เพิ่มเติม
@@ -131,12 +152,12 @@ export default function Home() {
                 {t.whyChoose?.description || "Discover the benefits of choosing AdsOK for your advertising needs."}
               </p>
               <div className="flex flex-col gap-2">
-                <Button className="bg-primary hover:bg-primary/90 text-white" icon={<Zap className="w-4 h-4" />}>
+                <Button className="bg-primary hover:bg-primary/90 text-white gap-2" icon={<Zap className="w-4 h-4" />}>
                   {t.whyChoose?.cta1 || "Get Started"}
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-primary text-primary hover:bg-red-50"
+                  className="border-primary text-primary hover:bg-red-50 gap-2"
                   icon={<Phone className="w-4 h-4" />}
                 >
                   {t.whyChoose?.cta2 || "Learn More"}
@@ -204,7 +225,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex justify-center mb-4">
-                <Image src="/placeholder.svg?height=80&width=80" alt="Advertisers" width={80} height={80} />
+                <Users className="w-16 h-16 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-center mb-3">
                 {t.whatIsAdsOK?.advertisers?.title || "Advertisers Get Exposure"}
@@ -222,7 +243,7 @@ export default function Home() {
 
             <div className="bg-primary p-6 rounded-lg shadow-sm text-white">
               <div className="flex justify-center mb-4">
-                <Image src="/placeholder.svg?height=80&width=80" alt="Publishers" width={80} height={80} />
+                <DollarSign className="w-16 h-16 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-center mb-3">
                 {t.whatIsAdsOK?.publishers?.title || "Publishers Earn More"}
@@ -238,9 +259,21 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <Image src="/placeholder.svg?height=200&width=200" alt="QR Code" width={200} height={200} />
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex justify-center mb-4">
+                <QrCode className="w-16 h-16 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-center mb-3">
+                {t.whatIsAdsOK?.qrCode?.title || "Easy Integration"}
+              </h3>
+              <p className="text-gray-600 text-center mb-4">
+                {t.whatIsAdsOK?.qrCode?.description ||
+                  "Seamlessly integrate our ad platform into your website or app with our user-friendly QR code system."}
+              </p>
+              <div className="text-center">
+                <Link href="/integration" className="text-primary font-medium hover:underline">
+                  {t.whatIsAdsOK?.cta || "Get Started"}
+                </Link>
               </div>
             </div>
           </div>
@@ -310,133 +343,99 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="py-16 bg-gradient-to-r from-primary/90 to-primary text-white">
+      {/* Testimonials */}
+      <section className="py-16 bg-gradient-to-r from-primary/90 to-primary relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-8">
-          <h2 className="text-3xl font-bold text-center mb-8">เสียงจากครีเอเตอร์</h2>
-          <Swiper
-            modules={[Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-              },
-              768: {
-                slidesPerView: 3,
-              },
-              1024: {
-                slidesPerView: 4,
-              },
-            }}
-            className="!pb-8"
-          >
-            <SwiperSlide>
-              <div className="bg-white rounded-xl p-6 text-gray-900 h-full">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 mb-4">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/creators/mame.png`}
-                      alt="mame&co"
-                      width={96}
-                      height={96}
-                      className="rounded-full"
-                    />
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <p className="text-[#20b526] font-medium uppercase mb-2">TESTIMONIAL</p>
+              <h2 className="text-4xl font-bold text-white">What Our Customer Says</h2>
+            </div>
+          </div>
+
+          <div className="relative">
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                },
+              }}
+              onSwiper={setSwiper}
+            >
+              {[
+                {
+                  name: "Robert Fox",
+                  image: "/placeholder.svg?height=60&width=60",
+                  text: "Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna dictum, bibendum cursus velit sodales. Donec sed neque eget",
+                },
+                {
+                  name: "Dianne Russell",
+                  image: "/placeholder.svg?height=60&width=60",
+                  text: "Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna dictum, bibendum cursus velit sodales. Donec sed neque eget",
+                },
+                {
+                  name: "Eleanor Pena",
+                  image: "/placeholder.svg?height=60&width=60",
+                  text: "Pellentesque eu nibh eget mauris congue mattis mattis nec tellus. Phasellus imperdiet elit eu magna dictum, bibendum cursus velit sodales. Donec sed neque eget",
+                },
+              ].map((testimonial, index) => (
+                <SwiperSlide key={index}>
+                  <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="text-[#20b526] text-4xl mb-4">"</div>
+                    <p className="text-[#4d4d4d] mb-6">{testimonial.text}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src={testimonial.image || "/placeholder.svg"}
+                          alt={testimonial.name}
+                          width={50}
+                          height={50}
+                          className="rounded-full"
+                        />
+                        <div>
+                          <h4 className="font-semibold">{testimonial.name}</h4>
+                          <p className="text-sm text-[#999999]">Customer</p>
+                        </div>
+                      </div>
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-5 h-5 text-[#ff8a00]" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-primary mb-2">คุณ mame&co</h3>
-                  <p className="text-sm text-gray-600 text-center">
-                    ฉันไม่มีประสบการณ์ด้านการวางอยู่มาก่อน แต่ผู้ดูแลวิดีโอของน้ำๆก็ได้แนะนำสิ่งที่ดีที่สุด การตั้งค่าวิดีโอและโฆษณาต่างๆของฉันเสมอมา
-                    กับเพื่อนและครอบครัว หรือโพสต์ลง SNS ว่า "ออ" ผู้ดูแลของฉันละครในสตินเกอร์ ฉันได้รู้สึกดีใจเมื่อที่ได้สร้างสติกเกอร์ขึ้นมา
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="bg-white rounded-xl p-6 text-gray-900 h-full">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 mb-4">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/creators/naoko.png`}
-                      alt="Naoko"
-                      width={96}
-                      height={96}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-2">คุณ Naoko</h3>
-                  <p className="text-sm text-gray-600 text-center">
-                    เดิมทีขึ้นอยู่กับอยู่ดีแล้วแต่ฉันเองเห็นว่า สติกเกอร์ ที่ควรได้เห็นมาตรฐานด้านนำมาทำให้ดี ไม่ต้องกังวลว่าทำเป็นอะไรไม่ได้ดี ถ้าคุณมี
-                    ภาษาและโฆษณาต่างๆของฉันก็เป็นเรื่องที่น่า ยินดีอีกด้วยว่าจะไร้เสีย
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="bg-white rounded-xl p-6 text-gray-900 h-full">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 mb-4">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/creators/beni.png`}
-                      alt="beni orange"
-                      width={96}
-                      height={96}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-2">คุณ beni orange</h3>
-                  <p className="text-sm text-gray-600 text-center">
-                    ฉันทำสติ๊กเกอร์โฆษณาเพื่อทำงานไม่ได้จริงเลย จนกลับด้วย จนได้รู้จักกับการสร้างสติกเกอร์ซึ่ง ทำให้ฉันได้
-                    ดีที่ได้มีเวลาได้และเริ่มสนใจในการ เรื่องราวเท่านั้น ว่าวันนี้ของคุณถูกที่พึงพอใจ ใช้ LINE ด้วยว่า "สติกเกอร์มีแต่ทำเอาชนะ"
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="bg-white rounded-xl p-6 text-gray-900 h-full">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 mb-4">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/creators/seikou.png`}
-                      alt="Seikou"
-                      width={96}
-                      height={96}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-2">คุณ Seikou</h3>
-                  <p className="text-sm text-gray-600 text-center">
-                    ฉันดีใจที่ได้สร้างสติกเกอร์เป็นงานอดิเรก ฉัน สร้างสติกเกอร์มา 10 ปีแล้ว ด้วยเหตุผลเพราะ ที่ได้ตรงนี้ได้ แต่ตรงนี้
-                    ที่และการสร้างสติกเกอร์ การมีและลูกที่และ ต้องการมีนิสัยมาสร้าง สติกเกอร์สนุกๆ ต่อไปเรื่อยๆ
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="bg-white rounded-xl p-6 text-gray-900 h-full">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 mb-4">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}/creators/piyotanuki.png`}
-                      alt="piyotanuki"
-                      width={96}
-                      height={96}
-                      className="rounded-full"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-2">คุณ piyotanuki</h3>
-                  <p className="text-sm text-gray-600 text-center">
-                    ตอนแรกผมเองสติกเกอร์ตัวไม่ได้จริงๆ ฉันดีใจ มาก รู้สึกดีที่ได้สร้างสติกเกอร์พระเข้ามาทำให้
-                    ผมได้โอกาสได้ด้วยและครอบครัวของผมเองมา สนับสนุนด้วยมากมัน
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button
+              onClick={slidePrev}
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 z-10 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#20b526] transition-colors"
+            >
+              <ArrowRight className="w-5 h-5 rotate-180" />
+            </button>
+            <button
+              onClick={slideNext}
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-10 w-10 h-10 rounded-full bg-[#20b526] flex items-center justify-center text-white hover:bg-white hover:text-[#20b526] transition-colors"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Decorative elements */}
+          <div className="absolute -bottom-10 -left-10 opacity-20">
+            <Image src="/placeholder.svg?height=150&width=150" alt="Decorative leaf" width={150} height={150} />
+          </div>
+          <div className="absolute -top-10 -right-10 opacity-20">
+            <Image src="/placeholder.svg?height=150&width=150" alt="Decorative leaf" width={150} height={150} />
+          </div>
         </div>
       </section>
 
@@ -491,12 +490,12 @@ export default function Home() {
                   "Join thousands of publishers and advertisers who are already benefiting from our platform."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-primary hover:bg-primary/90 text-white" icon={<Zap className="w-4 h-4" />}>
+                <Button className="bg-primary hover:bg-primary/90 text-white gap-2" icon={<Zap className="w-4 h-4" />}>
                   {t.cta?.cta1 || "Sign Up Now"}
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-primary text-primary hover:bg-red-50"
+                  className="border-primary text-primary hover:bg-red-50 gap-2"
                   icon={<Phone className="w-4 h-4" />}
                 >
                   {t.cta?.cta2 || "Contact Sales"}
@@ -537,94 +536,179 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Packages Section */}
+      {/* Packages Section - Updated to match the design */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8">
-          <h2 className="text-3xl font-bold mb-4 text-center">{t.packages?.title}</h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">{t.packages?.description}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-            {[
-              {
-                title: "แพ็กเกจฟรี",
-                price: "ฟรี",
-                description: "ผู้ใช้งานทั่วไปที่ต้องการขอลิงค์และแชร์ในโซเชียลมีเดีย",
-                buttonText: "ทดลองใช้งาน",
-                buttonVariant: "default",
-                bgColor: "bg-[#ebf7eb]",
-                borderColor: "border-[#34c759]",
-                features: ["ติดตามสถิติการคลิกเบื้องต้น", "ลงคีย์เวิร์ดแบบของเรา", "ลงคีย์ไม่มีขยะมา"],
-                disabledFeatures: ["ย่อลิงค์ได้ไม่จำกัดจำนวน", "รองรับ API สำหรับนักพัฒนา"],
-              },
-              {
-                title: "แพ็กเกจพรีเมียม",
-                price: "฿299/เดือน",
-                description: "ธุรกิจที่ต้องการเพิ่มความน่าเชื่อถือและควบคุมการแชร์ลิงก์",
-                buttonText: "อัปเกรด",
-                buttonVariant: "secondary",
-                bgColor: "bg-primary",
-                textColor: "text-white",
-                borderColor: "border-primary",
-                features: ["ติดตามสถิติการคลิกเบื้องต้น", "ลงคีย์เวิร์ดแบบของเรา", "ลงคีย์ไม่มีขยะมา", "ย่อลิงค์ได้ไม่จำกัดจำนวน"],
-                disabledFeatures: ["รองรับ API สำหรับนักพัฒนา"],
-              },
-              {
-                title: "แพ็กเกจสำหรับองค์กร",
-                price: "ราคาพิเศษ",
-                description: "เลือกราคาที่เหมาะสมกับขนาดธุรกิจของคุณ ติดต่อเราเพื่อขอใบเสนอราคา",
-                buttonText: "ติดต่อฝ่ายขาย",
-                buttonVariant: "default",
-                bgColor: "bg-[#ebf7eb]",
-                borderColor: "border-[#34c759]",
-                features: [
-                  "ติดตามสถิติการคลิกเบื้องต้น",
-                  "ลงคีย์เวิร์ดแบบของเรา",
-                  "ลงคีย์ไม่มีขยะมา",
-                  "ย่อลิงค์ได้ไม่จำกัดจำนวน",
-                  "รองรับ API สำหรับนักพัฒนา",
-                ],
-              },
-            ].map((pkg, i) => (
-              <Card
-                key={i}
-                className={`flex flex-col ${pkg.bgColor} border-2 ${pkg.borderColor} shadow-none
-      ${i === 1 ? "md:scale-110 md:z-10" : ""}`}
-              >
-                <CardHeader className={`space-y-2 ${pkg.textColor || "text-gray-900"}`}>
-                  <CardTitle className="text-2xl font-bold">{pkg.title}</CardTitle>
-                  <p className="text-sm opacity-90">{pkg.description}</p>
-                  <p className="text-4xl font-bold mt-4">{pkg.price}</p>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-4">
-                  {pkg.features.map((feature, j) => (
-                    <div key={j} className="flex items-center">
-                      <Check className={`mr-2 h-5 w-5 ${pkg.textColor || "text-primary"}`} />
-                      <span className={pkg.textColor || "text-gray-600"}>{feature}</span>
-                    </div>
-                  ))}
-                  {pkg.disabledFeatures?.map((feature, j) => (
-                    <div key={j} className="flex items-center opacity-50">
-                      <Check className="mr-2 h-5 w-5" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    variant={pkg.buttonVariant}
-                    className={`w-full ${pkg.buttonVariant === "secondary" ? "bg-white text-primary hover:bg-gray-100" : ""}`}
-                  >
-                    {pkg.buttonText}
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+          <div className="text-center mb-12">
+            <p className="text-primary uppercase font-medium mb-2">{t.packages?.subtitle || "PRICING"}</p>
+            <h2 className="text-4xl font-bold mb-4">{t.packages?.title || "Our pricing plans"}</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t.packages?.description || "Choose the perfect package for your advertising needs"}
+            </p>
           </div>
-          <div className="text-center mt-12">
-            <Link href="/pricing">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-                {t.packages?.viewAllButton || "View All Packages"}
-              </Button>
-            </Link>
+
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
+              <button
+                className={`px-4 py-2 rounded-full ${currency === "THB" ? "bg-primary text-white" : "text-gray-700"}`}
+                onClick={() => handleCurrencyChange("THB")}
+              >
+                THB
+              </button>
+              <button
+                className={`px-4 py-2 rounded-full ${currency === "USD" ? "bg-primary text-white" : "text-gray-700"}`}
+                onClick={() => handleCurrencyChange("USD")}
+              >
+                USD
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Basic Package */}
+            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-gray-600">สำหรับผู้เริ่มต้น</p>
+                    <h3 className="text-xl font-bold">Basic</h3>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 mb-6">เหมาะสำหรับผู้เริ่มต้นที่ต้องการทดลองใช้งานระบบ</p>
+
+                <div className="mb-6">
+                  <p className="text-5xl font-bold">{currency === "THB" ? "฿999" : "$29"}</p>
+                  <p className="text-gray-600">/เดือน</p>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-4">สิ่งที่คุณจะได้รับ</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>การแสดงโฆษณาสูงสุด 250,000 ครั้ง</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>ตัวเลือกการกำหนดเป้าหมายพื้นฐาน</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>การวิเคราะห์มาตรฐาน</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>สมาชิกในทีมสูงสุด 3 คน</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-white border border-primary text-primary hover:bg-primary hover:text-white">
+                  เริ่มต้นใช้งาน
+                </Button>
+              </div>
+            </div>
+
+            {/* Pro Package */}
+            <div className="bg-primary rounded-xl border-2 border-primary overflow-hidden shadow-md transform md:scale-105 relative">
+              <div className="absolute top-0 right-0">
+                <div className="bg-white/20 text-white text-xs px-4 py-1 rounded-bl-lg font-medium">ยอดนิยม</div>
+              </div>
+              <div className="p-6 text-white">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white/80">สำหรับธุรกิจขนาดกลาง</p>
+                    <h3 className="text-xl font-bold">Pro</h3>
+                  </div>
+                </div>
+
+                <p className="text-white/80 mb-6">เหมาะสำหรับธุรกิจที่ต้องการเติบโตอย่างรวดเร็ว</p>
+
+                <div className="mb-6">
+                  <p className="text-5xl font-bold">{currency === "THB" ? "฿2,999" : "$89"}</p>
+                  <p className="text-white/80">/เดือน</p>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-4">สิ่งที่คุณจะได้รับ</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-white mr-2" />
+                      <span>การแสดงโฆษณาสูงสุด 1,000,000 ครั้ง</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-white mr-2" />
+                      <span>ตัวเลือกการกำหนดเป้าหมายขั้นสูง</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-white mr-2" />
+                      <span>การวิเคราะห์แบบเรียลไทม์</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-white mr-2" />
+                      <span>สมาชิกในทีมสูงสุด 10 คน</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-white text-primary hover:bg-gray-100">เริ่มต้นใช้งาน</Button>
+              </div>
+            </div>
+
+            {/* Enterprise Package */}
+            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                    <DollarSign className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-gray-600">สำหรับองค์กรขนาดใหญ่</p>
+                    <h3 className="text-xl font-bold">Enterprise</h3>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 mb-6">เหมาะสำหรับองค์กรขนาดใหญ่ที่ต้องการโซลูชันแบบครบวงจร</p>
+
+                <div className="mb-6">
+                  <p className="text-5xl font-bold">{currency === "THB" ? "฿9,999" : "$299"}</p>
+                  <p className="text-gray-600">/เดือน</p>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-4">สิ่งที่คุณจะได้รับ</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>การแสดงโฆษณาไม่จำกัด</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>โซลูชันการกำหนดเป้าหมายแบบกำหนดเอง</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>การวิเคราะห์และการรายงานขั้นสูง</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-5 h-5 text-primary mr-2" />
+                      <span>สมาชิกในทีมไม่จำกัด</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <Button className="w-full bg-white border border-primary text-primary hover:bg-primary hover:text-white">
+                  ติดต่อฝ่ายขาย
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

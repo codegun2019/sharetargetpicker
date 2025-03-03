@@ -6,13 +6,14 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Apple, Facebook, UserPlus } from "lucide-react"
+import { Eye, EyeOff, User, Mail, Lock, UserPlus, BarChart, Target, Zap, DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { FcGoogle } from "react-icons/fc"
+import { FaFacebook } from "react-icons/fa"
+import { Card, CardContent } from "@/components/ui/card"
 
 // Import translations
 import th from "@/locales/th.json"
@@ -31,7 +32,6 @@ export default function RegisterPage() {
   }, [])
 
   const t = translations[lang]?.register || {}
-  t.orContinueWith = t.orContinueWith || "หรือดำเนินการต่อด้วย"
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -42,9 +42,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
-      <Card className="w-full max-w-5xl flex overflow-hidden">
-        <div className="hidden lg:block lg:w-1/2 relative">
+    <div className="flex flex-col min-h-screen bg-[#ffffff]">
+      <div className="flex flex-col lg:flex-row flex-grow">
+        {/* Left side - Image */}
+        <div className="w-full lg:w-1/2 bg-[#00B900] relative flex items-center justify-center">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL}/images/register-image.jpg`}
             alt="AdsOK Register"
@@ -52,116 +53,190 @@ export default function RegisterPage() {
             objectFit="cover"
             priority
           />
+          <div className="absolute inset-0 bg-[#00B900] opacity-50"></div>
+          <div className="absolute text-white text-center p-8 max-w-lg">
+            <h2 className="text-4xl font-bold mb-4">{t.imageTitle || "Very good works are waiting for you"}</h2>
+            <p className="text-xl">{t.imageSubtitle || "Register Now!!!"}</p>
+          </div>
         </div>
-        <div className="w-full lg:w-1/2 p-8">
-          <CardHeader className="space-y-1">
-            <div className="flex justify-center mb-6">
-              <Image src="/logo-red.svg" alt="AdsOK Logo" width={150} height={150} priority className="h-auto" />
+
+        {/* Right side - Register Form */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+          <div className="w-full max-w-md space-y-8">
+            <div className="text-center">
+              <Image src="/logo-red.svg" alt="AdsOK Logo" width={150} height={150} className="mx-auto" />
+              <h1 className="mt-6 text-3xl font-bold text-[#000000]">{t.title || "REGISTER"}</h1>
+              <p className="mt-2 text-sm text-[#525252]">
+                {t.subtitle || "How to i get started lorem ipsum dolor at?"}
+              </p>
             </div>
-            <h1 className="text-2xl font-bold text-center">{t.title || "สมัครสมาชิก"}</h1>
-            <p className="text-sm text-center text-gray-500">{t.subtitle || "สร้างบัญชีของคุณและเริ่มต้นการเดินทางกับเรา"}</p>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">{t.firstName || "ชื่อ"}</Label>
-                  <Input id="firstName" placeholder={t.firstNamePlaceholder || "กรุณากรอกชื่อ"} required />
+
+            <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="username" className="sr-only">
+                    {t.username || "Username"}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="username"
+                      name="username"
+                      type="text"
+                      required
+                      className="pl-10 bg-[#f0edff]"
+                      placeholder={t.usernamePlaceholder || "Username"}
+                    />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#525252]" size={18} />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName">{t.lastName || "นามสกุล"}</Label>
-                  <Input id="lastName" placeholder={t.lastNamePlaceholder || "กรุณากรอกนามสกุล"} required />
+                <div>
+                  <Label htmlFor="email" className="sr-only">
+                    {t.email || "Email"}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      className="pl-10 bg-[#f0edff]"
+                      placeholder={t.emailPlaceholder || "Email"}
+                    />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#525252]" size={18} />
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">{t.email || "อีเมล"}</Label>
-                <Input id="email" type="email" placeholder={t.emailPlaceholder || "กรุณากรอกอีเมล"} required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">{t.password || "รหัสผ่าน"}</Label>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder={t.passwordPlaceholder || "กรุณากรอกรหัสผ่าน"}
-                    required
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-2 top-1/2 -translate-y-1/2"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-gray-500" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-gray-500" />
-                    )}
-                  </Button>
+                <div>
+                  <Label htmlFor="password" className="sr-only">
+                    {t.password || "Password"}
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      required
+                      className="pl-10 bg-[#f0edff]"
+                      placeholder={t.passwordPlaceholder || "Password"}
+                    />
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#525252]" size={18} />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4 text-[#525252]" />
+                      ) : (
+                        <Eye className="h-4 w-4 text-[#525252]" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="userType">{t.userType || "ประเภทผู้ใช้"}</Label>
-                <Select required>
-                  <SelectTrigger id="userType">
-                    <SelectValue placeholder={t.userTypePlaceholder || "เลือกประเภทผู้ใช้"} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="advertiser">{t.advertiser || "ผู้ลงโฆษณา"}</SelectItem>
-                    <SelectItem value="publisher">{t.publisher || "เจ้าของเว็บไซต์"}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90"
-                icon={<UserPlus className="w-4 h-4" />}
-              >
-                {t.registerButton || "สมัครสมาชิก"}
-              </Button>
-            </form>
-            {/* Social Sign Up Buttons */}
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
-                    {t.orContinueWith || "หรือดำเนินการต่อด้วย"}
-                  </span>
+                <div>
+                  <Label htmlFor="userType" className="sr-only">
+                    {t.userType || "User Type"}
+                  </Label>
+                  <Select required>
+                    <SelectTrigger id="userType" className="bg-[#f0edff]">
+                      <SelectValue placeholder={t.userTypePlaceholder || "Select user type"} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="advertiser">{t.advertiser || "Advertiser"}</SelectItem>
+                      <SelectItem value="publisher">{t.publisher || "Publisher"}</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-3">
-                <Button variant="outline" className="w-full">
-                  <Apple className="mr-2 h-4 w-4" />
-                  Apple
-                </Button>
-                <Button variant="outline" className="w-full">
-                  <Facebook className="mr-2 h-4 w-4 text-blue-600" />
-                  Facebook
-                </Button>
-                <Button variant="outline" className="w-full">
-                  <FcGoogle className="mr-2 h-4 w-4" />
-                  Google
-                </Button>
+              <Button
+                type="submit"
+                className="w-full bg-[#00B900] hover:bg-[#00B900]/90 text-white"
+                icon={<UserPlus className="w-4 h-4 mr-2" />}
+              >
+                {t.registerButton || "Register Now"}
+              </Button>
+
+              <div className="mt-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-[#d9d9d9]"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-white text-[#525252]">{t.orContinueWith || "Or continue with"}</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  <Button variant="outline" className="w-full">
+                    <FcGoogle className="mr-2 h-4 w-4" />
+                    Google
+                  </Button>
+                  <Button variant="outline" className="w-full">
+                    <FaFacebook className="mr-2 h-4 w-4 text-blue-600" />
+                    Facebook
+                  </Button>
+                </div>
               </div>
-            </div>
-          </CardContent>
-          <CardFooter className="flex flex-col space-y-4 text-center">
-            <p className="text-sm text-gray-500">
-              {t.haveAccount || "มีบัญชีอยู่แล้ว?"}{" "}
-              <Link href="/login" className="text-primary hover:underline">
-                {t.login || "เข้าสู่ระบบ"}
+            </form>
+
+            <p className="mt-10 text-center text-sm text-[#525252]">
+              {t.haveAccount || "Already have an account?"}{" "}
+              <Link href="/login" className="font-semibold text-[#00B900] hover:text-[#00B900]/90">
+                {t.login || "Login"}
               </Link>
             </p>
-            <p className="text-xs text-gray-400">{t.copyright || "© 2025 AdsOK. สงวนลิขสิทธิ์"}</p>
-          </CardFooter>
+          </div>
         </div>
-      </Card>
-    </main>
+      </div>
+
+      {/* Features Section */}
+      <section className="w-full py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">{t.features?.title || "Why Advertise with Us"}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Target,
+                title: t.features?.targeting?.title || "Precise Targeting",
+                description:
+                  t.features?.targeting?.description ||
+                  "Reach your ideal audience with our advanced targeting options.",
+              },
+              {
+                icon: BarChart,
+                title: t.features?.analytics?.title || "Real-time Analytics",
+                description:
+                  t.features?.analytics?.description ||
+                  "Get instant insights with our comprehensive real-time analytics.",
+              },
+              {
+                icon: Zap,
+                title: t.features?.performance?.title || "High Performance",
+                description:
+                  t.features?.performance?.description || "Achieve better ROI with our high-performing ad network.",
+              },
+              {
+                icon: DollarSign,
+                title: t.features?.costEffective?.title || "Cost-Effective",
+                description:
+                  t.features?.costEffective?.description ||
+                  "Maximize your advertising budget with our competitive rates.",
+              },
+            ].map((feature, index) => (
+              <Card key={index}>
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <feature.icon className="w-12 h-12 text-primary mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
 

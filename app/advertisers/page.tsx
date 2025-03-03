@@ -5,6 +5,8 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { BarChart, Target, Zap, DollarSign } from "lucide-react"
+import { GoToTopButton } from "@/components/go-to-top-button"
+import { FloatingContactButtons } from "@/components/floating-contact-buttons"
 
 // Import translations
 import th from "@/locales/th.json"
@@ -87,7 +89,7 @@ export default function AdvertisersPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <Card key={index}>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col items-center text-center">
                   <feature.icon className="w-12 h-12 text-primary mb-4" />
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
@@ -165,6 +167,8 @@ export default function AdvertisersPage() {
           </Button>
         </div>
       </section>
+      <GoToTopButton />
+      <FloatingContactButtons />
     </main>
   )
 }
