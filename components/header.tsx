@@ -81,7 +81,7 @@ export function Header() {
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src={isScrolled ? "/logo-red.svg" : "/logo.svg"}
+              src={isScrolled ? "/logo-red.png" : "/logo.svg"}
               alt="AdsOK Logo"
               width={120}
               height={40}

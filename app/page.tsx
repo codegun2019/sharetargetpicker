@@ -113,13 +113,24 @@ export default function Home() {
             </div>
             <div className="hidden lg:block relative">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="deupoad-feature-screen 1.png"
                 alt="AdsOK Platform"
-                width={500}
+                width={600}
                 height={400}
                 className="object-cover rounded-lg shadow-lg"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
+              <Image
+                src="deupload-feature-mobile 2.png"
+                alt="AdsOK Platform"
+                width={150}
+                height={224}
+                className="absolute -bottom-12 -right-1"
+              />
+              <div className="absolute -bottom-6 -left-7 bg-white p-4 rounded-lg shadow-lg">
+                <p className="text-primary font-bold text-xl">1,000,000+</p>
+                <p className="text-gray-600">เข้าถึงกลุ่มเป้าหมาย</p>
+              </div>
+              <div className="absolute -bottom-13 -right-3 bg-white p-4 rounded-lg shadow-lg">
                 <p className="text-primary font-bold text-xl">10,000+</p>
                 <p className="text-gray-600">ผู้เผยแพร่ที่ไว้วางใจ</p>
               </div>
@@ -177,9 +188,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="flex justify-center">
               <Image
-                src="/placeholder.svg?height=500&width=300"
+                src="/header_group.png"
                 alt="Mobile App"
-                width={300}
+                width={650}
                 height={500}
                 className="object-contain"
               />
